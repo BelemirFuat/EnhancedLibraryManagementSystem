@@ -127,6 +127,134 @@ bool Library::checkNotAvailableBook(std::string isbn_, std::list<Book> notAvaila
     return false;
 }
 
+bool Library::updateBook(std::string isbn_, std::list<Book> allBooks_, std::list<Book> availableBooks_, std::list<Book> notAvailableBooks_, std::list<User> allUsers)
+{
+    if (checkBook(isbn_, allBooks_, availableBooks_) == true)
+    {
+        for (auto it : allBooks_)
+        {
+            if (it.isbn == isbn_)
+            {
+                std::cout << "If you want to change the given information, please give the new. If you don't want then press enter and leave it blank." << std::endl;
+                std::cout << "Name: ";
+                std::string name_;
+                std::getline(std::cin, name_);
+                if (name_ != "")
+                {
+                    it.name = name_;
+                }
+                std::cout << "Author: ";
+                std::string author_;
+                std::getline(std::cin, author_);
+                if (author_ != "")
+                {
+                    it.author = author_;
+                }
+                std::cout << "Publisher: ";
+                std::string publisher_;
+                std::getline(std::cin, publisher_);
+                if (publisher_ != "")
+                {
+                    it.publisher = publisher_;
+                }
+                std::cout << "ISBN: ";
+                std::string isbn_;
+                std::getline(std::cin, isbn_);
+                if (isbn_ != "")
+                {
+                    it.isbn = isbn_;
+                }
+                std::cout << "Category: ";
+                std::string category_;
+                std::getline(std::cin, category_);
+                if (category_ != "")
+                {
+                    it.category = category_;
+                }
+                std::cout << "Edition: ";
+                std::string edition_;
+                std::getline(std::cin, edition_);
+                if (edition_ != "")
+                {
+                    it.edition = edition_;
+                }
+                std::cout << "Price: ";
+                std::string price_;
+                std::getline(std::cin, price_);
+                if (price_ != "")
+                {
+                    it.price = price_;
+                }
+                std::cout << "Quantity: ";
+                std::string quantity_;
+                std::getline(std::cin, quantity_);
+                if (quantity_ != "")
+                {
+                    it.quantity = quantity_;
+                }
+                std::cout << "Language: ";
+                std::string language_;
+                std::getline(std::cin, language_);
+                if (language_ != "")
+                {
+                    it.language = language_;
+                }
+                std::cout << "Pages: ";
+                std::string pages_;
+                std::getline(std::cin, pages_);
+                if (pages_ != "")
+                {
+                    it.pages = pages_;
+                }
+                std::cout << "Description: ";
+                std::string description_;
+                std::getline(std::cin, description_);
+                if (description_ != "")
+                {
+                    it.description = description_;
+                }
+                std::cout << "Published date: ";
+                std::string publishedDate_;
+                std::getline(std::cin, publishedDate_);
+
+                if (publishedDate_ != "")
+                {
+                    it.publishedDate = publishedDate_;
+                }
+                break;
+            
+            }
+        }
+    }
+    else
+    {
+        return false; // there is a problem with isbn
+    }
+}
+
+void Library::displayBook(std::string isbn_, std::list<Book> allBooks_, std::list<Book> availableBooks_)
+{
+    for (auto it : allBooks_)
+    {
+        if (it.isbn == isbn_)
+        {
+            std::cout << "Title: " << it.name << std::endl;
+            std::cout << "Author: " << it.author << std::endl;
+            std::cout << "Pages: " << it.pages << std::endl;
+            std::cout << "Description: " << it.description << std::endl;
+            std::cout << "Category: " << it.category << std::endl;
+            std::cout << "Edition: " << it.edition << std::endl;
+            std::cout << "Publisher: " << it.publisher << std::endl;
+            std::cout << "Published Date: " << it.publishedDate << std::endl;
+            std::cout << "Quantity: " << it.quantity << std::endl;
+            std::cout << "Price: " << it.price << std::endl;
+            std::cout << "ISBN: " << it.isbn << std::endl;
+            std::cout << "Language: " << it.language << std::endl;
+            std::cout << "Available: " << checkAvailableBook(isbn_, availableBooks_) << std::endl;
+        }
+    }
+}
+
 // user operations
 bool Library::addUser(std::string name, std::string password, std::string email, std::string phone, std::string address, std::string type, std::string userID, float credit, std::list<User> allUsers)
 {

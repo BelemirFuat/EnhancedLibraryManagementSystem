@@ -18,7 +18,8 @@ public:
     bool checkBook(std::string, std::list<Book>, std::list<Book>);
     bool checkAvailableBook(std::string, std::list<Book>);
     bool checkNotAvailableBook(std::string, std::list<Book>);
-
+    bool updateBook(std::string, std::list<Book>,std::list<Book>,std::list<Book>,std::list<User>);
+    void displayBook(std::string, std::list<Book>, std::list<Book>);
     // user operations
     bool addUser(std::string, std::string, std::string, std::string, std::string, std::string, std::string, float, std::list<User>);
     bool removeUser(std::string, std::list<User>);
